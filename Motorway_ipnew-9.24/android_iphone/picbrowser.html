@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-tab.css">
+    <link rel="stylesheet" href="css/ui-res.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-input.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.7.2.js">
+    </script>
+    <script src="js/zy_anim.js">
+    </script>
+    <script src="js/zy_control.js">
+    </script>
+ 	<script src="js/zy_tmpl.js">
+    </script>
+	<script src="js/zy_click.js">
+    </script>
+    <script src="js/weibo.js"></script>
+     <script>
+		zy_fix("header","footer",0,function()
+			{
+				
+			});
+		window.uexOnload = function(){
+			uexImageBrowser.cbPick = function(opCode,dataType,data)
+			{	
+				var d = "图片存在"+data;
+				alert(d);
+				uexWindow.toast("0","5",d,1000);
+			}
+		}
+	 </script>
+  </head>
+  
+ <body class="um-vp" >
+   
+<!--header开始-->
+<div id="header" class="uh c-grey9 c-m1 t-wh">
+<h1 class="ut ulev1 ut-s tx-c" tabindex="0">
+图片</h1>
+<div id="savepicbtn" style="margin-top:0.4em" class="ulev-1 btn b-gra uinn btn-r c-brey5 c-m3 uc-a us-i t-wh">
+	                                         保存到本地</div>
+</div> 
+<!--header结束-->
+
+
+<div id="page_0">
+<!--content开始-->
+<div class="content_1 c-grey9 c-m2">
+<div class="tx-c">
+
+<!--  <img src="" style="margin: auto;" /> -->
+</div>
+</div>
+<!--content结束-->
+</div>
+
+
+
+<!--footer开始-->
+
+<div id="footer" class="pic-bottom ub b-gra c-grey9 c-m12 t-wh uc-a1">	
+ 	<div class="ubr b-gra ub-f1 uinn1 umh5 uc-l1 tx-c" onclick="back();">
+ 		<div class="ui-icon-back" >&nbsp;&nbsp;</div><div class="ulev-1">返回</div>
+	</div>	 
+	<div class="b-gra ub-f1 tx-c">
+	    <div class="ui-icon-share">&nbsp;&nbsp;</div><div class="ulev-1">分享</div>
+	</div>
+</div>
+<!--footer结束-->
+
+
+  </body>
+  
+  
+   <script>
+	
+	zy_init();
+	
+	function back(){
+		localStorage.removeItem('url');
+		uexWindow.close(0);
+	}
+	$(document).ready(function(){
+		var p = localStorage.url;
+		var params=zy_parse();
+		/*设置标题*/
+		var title = params['title'];
+		$('.ui-title').html(title);
+		/*匹配图片大小*/
+		var hheight = parseInt($('.ui-header').css('height'));
+		var fheight = parseInt($('.ui-footer').css('height'));
+		var height = parseInt(window.innerHeight) - hheight - fheight;
+		$('.content').css('height', height); 
+		/*放入图片*/
+		var picss = localStorage.backurl + 'center center no-repeat !important;-webkit-background-size:100% 100%;';
+		$('.content').css('background', picss);
+		$('.content').css('background', '-webkit-background-size:100% 100%');
+		
+		$('#savepicbtn').click(function(){
+			uexImageBrowser.save(p);
+		});
+		/*跳转到分享页 */
+		$('#share').click(function(){
+			var key = localStorage.url.match(/(.*)wgtRes(.*)/);
+			var src = "wgtRes" + key[2];//wgtRes/xxxx.jpg
+			var param = "share.html?src="+src;
+			localStorage.src = param;//share.html?src=wgtRes/xxxx.jpg
+			openweibo();
+ 			/*uexWindow.open("share","0",param,"2","0","0","0");*/
+		});
+		$('#returnbtn').click(function(){
+			back();
+		});
+	});
+	
+
+	
+   </script>
+</html>

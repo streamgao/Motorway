@@ -1,0 +1,58 @@
+.res1{
+	background-image: url('wgtRes/1.jpg'); 
+	z-index:1000;
+}
+.res2
+{
+	background-image:url('images/t-arrow.png');
+}
+
+.res3
+{
+	background-image:url('images/b-arrow.png');
+}
+.res4
+{
+	background-image:url('images/add-icon.png')!important;
+}
+.res5 {
+	background-image: url(images/del.png);
+}
+.res6{
+	background-image: url(images/icon-search-black.png);
+}
+.res7 {
+	background-image: url(wgtRes/7.jpg);
+}
+.res8{
+	background-image: url('images/arrow.png');
+}
+
+.res9
+{
+	background-image: url('images/selected.png');
+}
+
+.res10
+{
+	background-image:url('img/appcan.png')!important;
+}
+
+.poster{
+	background-position:fixed;
+	background-position:bottom center;
+	-webkit-background-size:100% 100%;
+}
+
+.ui-icon-back {
+	background-image: url('images/icons-18-white_23.png');
+	background-position:top center;
+	background-repeat:no-repeat;
+	margin-bottom:0.2em;
+}
+.ui-icon-share {
+	background-image: url('images/icons-18-white_27.png');
+	background-position:top center;
+	background-repeat:no-repeat;
+	margin-bottom:0.2em;
+}

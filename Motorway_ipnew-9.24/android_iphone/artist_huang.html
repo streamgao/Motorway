@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="ui-mobile landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8" >	
+	<link rel="stylesheet" href="css/ui-color.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-input.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet"  href="css/style.css"  > 
+    <script src="js/zy_anim.js"></script>
+    <script src="js/zy_control.js"></script>
+ 	<script src="js/zy_tmpl.js"></script> 
+ 	<script src="js/imagebrowser.js"></script>
+ 	<script src="js/jquery-1.7.2.js"></script>
+ 	<script src="js/weibo.js"></script>
+ 	<script src="js/jquery.mobile-1.1.0.js"></script>
+ 	<script>
+ 	$(document).ready(function(){
+ 		/*滑动换页*/
+ 		if( localStorage.inpage == "演员介绍" ){
+				$("body").live("swipeleft",function(){
+					localStorage.artopage="artist_he.html";
+					window.location.href=localStorage.artopage;
+				});
+				$("body").live("swiperight",function(){
+					localStorage.arbackpage="artist_huang.html";
+					window.location.href=localStorage.arbackpage;
+				});
+		}
+ 		/*打开图片浏览界面*/
+ 		$('.pic').click(function(){
+ 			var temp = $(this).css("background-image");
+ 			var img = temp.substring(4, temp.length-1);
+ 			localStorage.backurl = temp;//点击的图片地址，url开头，设置图片浏览器中的图片
+ 			localStorage.url = img;//点击的图片的地址，file开头
+ 			var title = $(this).attr('id');
+ 			var param="picbrowser.html?title="+title;
+ 			uexWindow.open("picbrowser","0",param,"2","0","0","0");
+ 		});
+ 	});
+ 	</script>
+  </head>
+  
+<body class="um-vp">	
+	
+<!--header开始-->
+<div id="header" class="uh c-grey9 c-m1 t-wh">
+	<h1 class="ut ulev0 ut-s tx-c" tabindex="0">
+	<div class="btn btn-l btn-a ub ub-ac ">
+		<div class="ulim" onclick="uexWindow.close(0);">返回</div>
+	</div>
+		演员介绍
+	</h1>
+</div>
+<!--header结束-->
+
+<!--content开始-->
+<div id="content" class="vanc1"> 
+	<div class="wrapper1">  
+		<div id="卢峰" class="huang_1 pic ufl"></div>
+			<div class="text1">
+			<div class="name">&nbsp;&nbsp;&nbsp;&nbsp;卢峰</div> 
+		<div class="profile1"><br/>&nbsp;&nbsp;&nbsp;&nbsp;安于本份，循规蹈矩，表面上是一位事无大小都要求支援，不去拼搏的老油条，但其实有不为人知的过去。曾是警队一流车手，
+		                                                                          可惜因为一次追截行动，心里留下阴影，从此裹足不前。</div>
+	</div>
+	</div> 
+		
+	
+	<div class="wrapper2">
+	     <div class="huang_2 pic ufr" id="黄秋生"></div>
+	     <div class="text2">
+	        <div class="name">&nbsp;&nbsp;&nbsp;&nbsp;黄秋生</div>
+	     	<div class="profile2" ><br/>&nbsp;&nbsp;&nbsp;&nbsp;香港演员，凭借影片《八仙饭店之人肉叉烧包》和《野兽刑警》两次荣获香港电影金像奖最
+	                                                                                       佳男主角奖。影片《野兽刑警》同时还让其获得了香港电影金紫荆奖最佳男主角奖。</div>
+	     </div>
+	     
+	</div>
+<!--content结束-->
+	
+<!--footer开始-->
+
+  </body>
+  </html>

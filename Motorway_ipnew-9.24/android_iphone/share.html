@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="ui-mobile landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-media.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/zy_anim.js"></script>
+    <script src="js/zy_control.js"></script>
+	<script src="js/zy_tmpl.js"></script>
+	<script src="js/jquery-1.7.2.js"></script>
+    <script src="js/weibo.js"></script>
+     <script>
+		zy_fix("header","footer",0,function()
+			{
+				/*请在此插入网页初始化代码*/
+			});
+	    function j2vHome(opId,status,data)
+	    {
+	    	if(opId=="30" && status=="1")
+			{
+				uexXmlHttpMgr.close(opId);
+				alert('发表成功!');
+				/*uexWindow.evaluateScript("share","0","onSendSuccess("+JSON.stringify(data)+")");*/
+		    	uexWindow.close(0);
+		    	/*uexWindow.open('hstypage', '0', 'comic.html', '1', '', '', 0x0);*/
+		    	//localStorage.removeItem("url");
+			}
+	    }
+	    function cbError(opid,errCode,errDes)
+	    {
+	    	Log("opid "+opid+" errorcode "+errCode+" errDes "+errDes);
+	    	if(opid=="30")
+	    	{
+	    		//alert(errorcode);
+	    		uexXmlHttpMgr.close(opid);
+	    	}
+	    }
+	    function uploadInfo()
+	    {
+	    	uexXmlHttpMgr.onData=j2vHome;//设定上传接口数据回调函数
+	    	uexWidgetOne.cbError=cbError;//设定异常处理函数
+	    	var wb_if="https://api.weibo.com/2/statuses/upload.json";
+	    	uexXmlHttpMgr.open("30","POST",wb_if,"60000");
+	    		//alert(wb_if);
+	    	uexXmlHttpMgr.setPostData("30","0","access_token",localStorage.token);
+	    		//alert(localStorage.token);
+	    	var text=document.getElementById("textarea-0").value;
+	    		//alert(text);
+	    	uexXmlHttpMgr.setPostData("30","0","status",text);
+	    		//alert('pp');
+	    	var picUrl=document.getElementById("uploadImgPrev").src;
+	    		//alert(picUrl);
+	    	var pic = localStorage.url.match(/(.*)wgtRes(.*)/);//localStorage.url点击的图片的地址，file开头
+	    		//alert(pic[2]);
+	    	var pp="res:/" + pic[2];
+	    	uexXmlHttpMgr.setPostData("30","1","pic",pp);
+	    		//alert(pp);
+	    	uexXmlHttpMgr.send("30");
+	    	//uexWindow.close(0);
+	    }
+	 </script>
+  </head>
+  <body class="ui-mobile-viewport" >
+
+<!--header开始-->
+<div data-role="header" class="ui-header ui-bar-a ui-header-fixed " >
+	<h1 style="font-size:1.0em; font-family:微软雅黑;" class="ui-title" tabindex="0" role="heading" aria-level="1">分享到微博</h1> 
+	<div class="ui-btn ui-btn-limit ui-btn-left ui-btn-iphone" onclick="uexWindow.close(0);"> 
+		<div class="ui-btn-apple-al">
+			<div class="ui-btn-apple-ar">
+				<div class="ui-btn-apple-ac">
+					<span class="ui-btn-inner ">
+						<span class="ui-btn-text">返回</span>  
+						<span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
+					</span>  
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--header结束-->
+
+<div id="page_0" class="ui-page ui-body-a ui-page-active" tabindex="0">
+<!--content开始-->
+<div class="ui-content ui-fixed-top ui-fixed-bottom">
+<!--文本区域开始-->
+<textarea placeholder="有什么想说的和大家分享一下吧~"  name="textarea-0" id="textarea-0" class="ui-input-text ui-body-null ui-btn-corner-all ui-shadow-inset ui-btn-a" style="height:6em;margin-top:2em;">
+今年夏天，漂移归来！6月21日，由杜琪峰监制、郑宝瑞导演的@电影车手将挑战漂移极限。我们邀请您跟着电影主创@余文乐@黄秋生@大S@郭晓冬@何超儀HoChiu@李光洁@林家栋@叶璇 一起漂移到世界尽头吧！
+下载车手电影app应用，还有更贴心的服务哦~
+下载地址：http://www.moodlike.com/app/
+</textarea>
+<!--文本区域结束-->
+
+<div class="ui-bar">
+<img id="uploadImgPrev" src="" class="ui-bar ui-float-right " style="border:0px;width:3em;height:3em;" >
+
+</div>
+</div>
+<!--content结束-->
+</div>
+<!--footer开始-->
+
+
+<div data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed">
+<div class=" ui-title" tabindex="0" role="footer" aria-level="1">
+	<div onclick="uploadInfo()" data-role="button"  class="ui_fx ui-btn-right ui-btn-corner-all ui-btn  ui-btn-a ui-btn-icon-top  ui-shadow">
+		<span class=" ui-btn-inner ui-btn-corner-all">
+			<span class="ui_fx_1 ui-btn-text">发表</span>
+			<span class="ui-icon ui-icon-check ui-icon-shadow"></span>
+		</span>
+	</div> 
+</div>
+</div>
+
+<!--footer结束-->
+
+
+  </body>
+   <script>
+	zy_init();
+	$(document).ready(function(){
+		var params=zy_parse();
+		$('#uploadImgPrev').attr('src',params['src']);
+	});
+	
+   </script>
+</html>

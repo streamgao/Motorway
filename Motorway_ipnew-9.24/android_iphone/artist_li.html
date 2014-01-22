@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="ui-mobile landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>artist_yu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-media.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-apple.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/zy_anim.js"></script>
+    <script src="js/zy_control.js"></script>
+ 	<script src="js/zy_tmpl.js"></script>
+ 	<script src="js/imagebrowser.js"></script>
+ 	<script src="js/jquery-1.7.2.js"></script>
+ 	<script src="js/weibo.js"></script>
+    <script src="js/jquery.mobile-1.1.0.js"></script>
+ 	<script>
+ 	$(document).ready(function(){
+ 		/*滑动换页*/
+ 		if( localStorage.inpage == "演员介绍" ){
+				$("body").live("swipeleft",function(){
+					localStorage.artopage="artist_ye.html";
+					window.location.href=localStorage.artopage;
+					//localStorage.removeItem("artopage");
+				});
+				$("body").live("swiperight",function(){
+					localStorage.arbackpage="artist_lin.html";
+					window.location.href=localStorage.arbackpage;
+					//localStorage.removeItem("arbackpage");
+				});
+		}
+ 		/*打开图片浏览界面*/
+ 		$('.pic').click(function(){
+ 			var temp = $(this).css("background-image");
+ 			var img = temp.substring(4, temp.length-1);
+ 			localStorage.backurl = temp;//点击的图片地址，url开头，设置图片浏览器中的图片
+ 			localStorage.url = img;//点击的图片的地址，file开头
+ 			var title = $(this).attr('id');
+ 			var param="picbrowser.html?title="+title;
+ 			uexWindow.open("picbrowser","0",param,"2","0","0","0");
+ 		});
+ 	});
+ 	</script>
+  </head>
+  
+  <body class="ui-mobile-viewport" >
+
+  	<div class="vanc1" >
+  	 
+  	    <div data-role="header" class="ui-header ui-bar-a ui-header-fixed ">
+            <div style="font-size:1.0em; font-family:微软雅黑;" class="ui-title" tabindex="0" role="heading" aria-level="1">
+                              演员介绍
+            </div> 
+	<div class="ui-btn ui-btn-limit ui-btn-left ui-btn-iphone" onclick="uexWindow.close(0);"> 
+		<div class="ui-btn-apple-al">
+			<div class="ui-btn-apple-ar">
+				<div class="ui-btn-apple-ac">
+					<span class="ui-btn-inner ">
+						<span class="ui-btn-text">返回</span>  
+						<span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
+					</span>  
+				</div>
+			</div>
+		</div>
+	</div>
+       </div>
+        
+	<div class="wrapper1">  
+		<div class="pic li_1" id="阿壹"></div>
+		<div class="text1">
+		<div style= "font-size:1.0em; font-family:微软雅黑;">“混世悍匪”阿壹</div> 
+		<div style= "font-size:0.9em; font-family:微软雅黑;"><br/>&nbsp;&nbsp;&nbsp;&nbsp;打拼多年、雄霸一方的黑道悍匪，心狠手辣，为达目的不择手段。与“豪迈大盗”黄中（李海涛 饰）合谋，打算行劫原钻。
+		救出黄中后，随即反脸不认人，一心只套取原钻抵步日期，再杀人灭口。</div>
+		</div> 
+	</div>
+	<div class="wrapper2">
+		 <div class="pic li_2" id="李光洁"></div>
+	     <div class="text2">
+	     <div style= "font-size:1.0em; font-family:微软雅黑;">&nbsp;&nbsp;&nbsp;&nbsp;李光洁</div>
+	     <div style= "font-size:0.9em; font-family:微软雅黑;"><br/>&nbsp;&nbsp;&nbsp;&nbsp;李光洁，代表作《走向共和》，《军人机密》《山楂树之恋》，
+	     《杜拉拉升职记》</div>
+	     </div>
+	     
+	</div>
+	
+</div>
+</body>
+  
+<script>
+zy_init();
+</script>
+</html>

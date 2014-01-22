@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="ui-mobile landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8" >	
+	<link rel="stylesheet" href="css/ui-color.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-input.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet"  href="css/style.css"  > 
+    <script src="js/zy_anim.js"></script>
+    <script src="js/zy_control.js"></script>
+ 	<script src="js/zy_tmpl.js"></script> 
+ 	<script src="js/imagebrowser.js"></script>
+ 	<script src="js/jquery-1.7.2.js"></script>
+ 	<script src="js/weibo.js"></script>
+ 	<script src="js/jquery.mobile-1.1.0.js"></script>
+ 	<script>
+ 	$(document).ready(function(){
+ 		/*滑动换页*/
+ 		if( localStorage.inpage == "演员介绍" ){
+				$("body").live("swipeleft",function(){
+					localStorage.artopage="artist_he.html";
+					window.location.href=localStorage.artopage;
+				});
+				$("body").live("swiperight",function(){
+					localStorage.arbackpage="artist_huang.html";
+					window.location.href=localStorage.arbackpage;
+				});
+		}
+ 		/*打开图片浏览界面*/
+ 		$('.pic').click(function(){
+ 			var temp = $(this).css("background-image");
+ 			var img = temp.substring(4, temp.length-1);
+ 			localStorage.backurl = temp;//点击的图片地址，url开头，设置图片浏览器中的图片
+ 			localStorage.url = img;//点击的图片的地址，file开头
+ 			var title = $(this).attr('id');
+ 			var param="picbrowser.html?title="+title;
+ 			uexWindow.open("picbrowser","0",param,"2","0","0","0");
+ 		});
+ 	});
+ 	</script>
+  </head>
+  
+<body class="um-vp">	
+	
+<!--header开始-->
+<div id="header" class="uh c-grey9 c-m1 t-wh">
+	<h1 class="ut ulev0 ut-s tx-c" tabindex="0">
+	<div class="btn btn-l btn-a ub ub-ac ">
+		<div class="ulim" onclick="uexWindow.close(0);">返回</div>
+	</div>
+		演员介绍
+	</h1>
+</div>
+<!--header结束-->
+
+<!--content开始-->
+<div id="content" class="vanc1"> 
+	<div class="wrapper1">  
+		<div id="蕙" class="he_1 pic ufl"></div>
+			<div class="text1">
+			<div class="name">&nbsp;&nbsp;&nbsp;&nbsp;蕙</div> 
+		<div class="profile1"><br/>&nbsp;&nbsp;&nbsp;&nbsp;警队重案组指挥官，接手蒋薪一案后，即进驻警署，没片刻松懈。蕙在工作上巾帼不让须眉。</div>
+	        </div>
+	</div> 
+		
+	
+	<div class="wrapper2">
+	     <div class="he_2 pic ufr" id="何超仪"></div>
+	     <div class="text2">
+	        <div class="name">&nbsp;&nbsp;&nbsp;&nbsp;何超仪</div>
+	     	<div class="profile2" ><br/>&nbsp;&nbsp;&nbsp;&nbsp;艺名何超，香港女歌手，电影演员。1994年她以歌手身份踏
+	                                                                                            足香港娱乐圈，清新和反叛的气质备受乐坛注目。2003年在电影《豪情》中饰演风情万种的口技女
+	                                                                                            王赵啷啷，夺得第23届香港电影金像奖最佳女配角奖。</div>
+	     </div>
+	     
+	</div>
+<!--content结束-->
+	
+
+  </body>
+  </html>

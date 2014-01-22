@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>comic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-res.css">
+    <link rel="stylesheet" href="css/ui-media.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/comic.css">
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/zy_anim.js"></script>
+    <script src="js/zy_control.js"></script>
+ 	<script src="js/zy_event.js"></script>
+    <script src="js/weibo.js"></script>
+    <script src="js/accelerometer.js"></script>
+    <script src="js/menuani.js"></script>
+ 
+ 	<!--Adobe Edge Runtime-->
+  	<script type="text/javascript" charset="utf-8" src="07_edgePreload.js"></script>
+    <style>
+        .edgeLoad-EDGE-10881230 { display:none; }
+    </style>
+	<!--Adobe Edge Runtime End-->   
+   
+  </head>
+  <body class="um-vp" id="items" >
+  
+	<div id="07" class="EDGE-10881230 edge">
+		<script>	
+			window.uexOnload=comicWindow();
+			<!-- 跳转页 -->
+			localStorage.backpage = "comic04.html";
+			localStorage.topage   = "comic08.html";
+</script>
+	</div>
+	<div>
+	
+	<!-- 视频、演员按钮 -->
+	<div class="artistbtn" style="position:fixed; top:0; height:100%; width:100%; color:#000000;">
+		<div class="artistbtn" style="position:absolute; height:80%;width:60%;top:8%;left:10%;" onclick="uexWindow.open('artist', '0', 'artist_he.html', '2', '', '', 0x0);"></div>
+	</div>
+	</div>
+	<!-- 菜单按钮   -->
+	<a id="menubtn" class="hidden ulev1" data-test="bounceIn">Menu</a>
+	
+
+	<!-- 菜单开始 -->
+<div id="menu" class="hidden">
+		<ul class="menulist" >
+			<li id="share" >分享本页漫画</li>
+			<br/>
+			<li id="gfweibo" >官方微博</li>
+			<br/>
+			<li id="artists" >演员介绍</li>
+			<br/>
+			<li id="ymbh" >银幕背后</li>
+			<br/>
+			<li id="ticket" >立即购票</li>
+			<br>
+			<li id="team" >制作团队</li>
+		</ul>
+	</div>
+
+	<!-- 菜单按钮结束 -->
+
+	<!-- 用来获取背景图片的 -->
+	<div id="comicpic" src="wgtRes/comic07.jpg" style="background:url(wgtRes/comic07.jpg);display:none;"></div>
+
+  </body>
+   <script>
+	zy_init();
+	
+	<!-- 传感器回调 -->
+	var m2="http://www.moodlike.com/video/motorway_trailer.mp4";
+	function loadappa(){
+	　　　　　　var appInfo = "android.intent.action.VIEW"; 
+	　　　　　　var filter = "text/html";
+	　　　　　　var dataInfo = m2;
+	　　　　　　uexWidget.loadApp(appInfo, filter, dataInfo);
+	　　　　}
+	
+		
+			
+	<!-- 菜单跳转-->
+		localStorage.inpage == "1";
+		$('#gfweibo').click(function(){
+			uexWindow.toast("0","5","正在加载车手官方微博~稍等哦~",0);
+			uexWindow.open('gfweibo', '0', 'gfweibo.html', '2', '', '', 0x0);
+		});
+		$('#artists').click(function(){
+			localStorage.inpage = "演员介绍";
+			uexWindow.open('artists', '0', 'artist_yu.html', '2', '', '', 0x0);
+		});
+		$('#ymbh').click(function(){
+			uexWindow.open('ymbh', '0', 'ymbh.html', '2', '', '', 0x0);
+		});
+		$('#ticket').click(function(){
+			uexWindow.open('ticket', '0', 'film.html', '2', '', '', 0x0);
+		});
+		$('#team').click(function(){
+			uexWindow.open('team', '0', 'team.html', '2', '', '', 0x0);
+		});
+		
+		
+		
+	window.uexOnload=function(type) {
+	   	if(!type){
+					
+					/*打开浏览器回调*/
+			uexWidgetOne.cbError = function(opCode, errorCode, errorInfo){
+	　　　　　　　　alert("errorCode:" + errorCode + "\nerrorInfo:" + errorInfo);
+			}
+	   		/*传感器回调*/
+				uexSensor.onAccelerometerChange = accelerometerChange;
+				uexWidgetOne.cbError = function(opCode,errorCode,errorInfo){
+					alert("errorCode:" + errorCode + "\nerrorInfo:" + errorInfo);
+	   				}
+	   			uexSensor.open(1,3);
+		
+					
+	<!-- 菜单弹出动画 -->
+		$('a[data-test]').click(function(){
+			if($('#menu').attr('class') == 'hidden'){
+				bounceIn();
+			}
+			else{
+				bounceOut();
+			}
+		});
+		
+			<!-- 菜单按钮隐藏 -->
+			$('div:not("#menubtn"):not("#pc-btn-l"):not("#pc-btn-r")').click(function(){
+				if($('#menubtn').attr('class') == 'hidden'){
+					fadeInUp();
+				}
+				else{
+					fadeOutDown();
+					if($('#menu').attr('class') != 'hidden'){
+						bounceOut();
+					}
+				}
+			});
+		}
+	}//uexOnload			
+	
+   </script>
+</html>

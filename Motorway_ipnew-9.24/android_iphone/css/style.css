@@ -1,0 +1,257 @@
+
+/*����������ʽ*/
+@charset "utf-8";
+/* CSS Document */
+body,p,div,ul,ol,li,dl,dt,dd,span,var,em,a,img,strong,table,td,tr,h2,h3,h4,h5,input{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+body,p,div,ul,ol,li,dl,dt,dd,span,var,em,a,img,strong,table,td,tr,h2,h3,h4,h5{
+	font-family: ΢���ź�,Arial, Helvetica, sans-serif;
+	margin:0;
+	padding:0;
+	color:white;
+	/*text-shadow: 1px 1px 3px #888, 1px 1px 0 #333;*/
+	text-shadow: 0px 0px 1px #888;
+	}
+a,img{border:none;text-decoration:none;}
+ul,ol{list-style-type:none;}
+.clear{overflow:hidden;height:0;clear:both; font-size:0;}
+.returnbtn{
+	bottom:0px;
+}
+
+
+/*�����ּ��*/
+
+.vanc1{
+	position:absolute; 
+	top:6%
+	bottom:0;
+	left:0 ;
+	width:100%;
+	height:120%;
+	background: url(../images/background.jpg)center center repeat !important;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.vanc0{
+	position: absolute; 
+	bottom: 0;
+	top:0;
+	left:0 ;
+	width:100%;
+	background:#120807 url(../images/background1.jpg) center center no-repeat !important;
+	-webkit-background-size: 100% auto;
+	 background-size: 100% auto;	
+}
+
+.vanc2{
+	left:0 ;
+	top:0;
+	bottom:0;
+	width:100%;
+	background:#120807 url(../images/background1.jpg) center center repeat-y !important;
+	-webkit-background-size: 100% auto;
+	 background-size: 100% auto;
+}
+.wrapper1{ 
+	margin:10% 5%;
+	left:10%;
+    width:95%;
+    height:40%;
+    overflow:auto; 
+	top:5%;	
+}
+.wrapper2{
+    left:0;
+    width:90%;
+    height:40%;
+    overflow:auto; 
+    margin: 10% 5%;    	
+}
+.name{
+	font-size:1.0em;
+	font-family:微软雅黑;
+}
+.profile2{
+	font-size:0.9em;
+	font-family:微软雅黑;
+	margin:0 0 0 5%;
+}
+.profile1{
+	font-size:0.9em;
+	font-family:微软雅黑;
+	margin:0 5% 0 0;
+}
+
+.pic{
+   width:45%;
+   height:80%;
+   overflow:auto;
+   background-repeat:no-repeat !important;
+   -webkit-background-size: auto 100%;
+   background-size: auto 100%;
+}
+
+.text1{
+   width:48%;
+   height:90%;
+   display:inline;
+   right:5%;
+   float:right;
+   overflow:auto;  
+}
+.text2{
+   width:48%;
+   height:90%;
+   display:inline;
+   float:left;
+   overflow:auto;  
+}
+
+.yu_1{
+   background: url(../wgtRes/artist_yu_1.png);
+}
+.yu_2{
+   background: url(../wgtRes/artist_yu_2.png);
+}
+
+.ymbh_dy{
+    margin:20% 5% 0 5%;
+    width:90%;
+    height:70%;
+}
+.du_1{
+    width:48%;
+   float:left;
+   height:48%;
+   margin:0 5%;
+   overflow:auto;
+}
+.du_1_1{
+   width:100%;
+   height:100%;
+   margin:0 5%;
+}
+/*����*/
+.li_1{
+   background: url(../wgtRes/artist_li_1.png);
+}
+
+.li_2{
+   background: url(../wgtRes/artist_li_2.png);
+}
+.ye_1{
+   background: url(../wgtRes/artist_ye_1.png);
+}
+
+.ye_2{
+   background: url(../wgtRes/artist_ye_2.png);
+}
+/*�Ŷ�*/
+.zzteam_1{
+margin:25%  8% 0 8%;
+height:10%;
+width:90%;
+}
+.zzteam_2{
+  margin:0 20% 0 20%;
+  width:60%;
+}
+
+.zz_1{
+   float:left;
+}
+.zz_2{
+   float:right;
+}
+
+.xu_1{
+   background: url(../wgtRes/artist_xu_1.png);
+}
+.xu_2{
+   background: url(../wgtRes/artist_xu_2.png);
+}
+.huang_1{
+   background: url(../wgtRes/artist_huang_1.png); 
+}
+.huang_2{
+   background: url(../wgtRes/artist_huang_2.png);
+}
+/*�ּҶ�*/
+.lin_1{
+   background: url(../wgtRes/artist_lin_1.png); 
+}
+.lin_2{
+   background: url(../wgtRes/artist_lin_2.png); 
+}
+.he_1{
+   background: url(../wgtRes/artist_he_1.png);   
+}
+.he_2{
+   background: url(../wgtRes/artist_he_2.png); 
+}
+.guo_1{
+   background: url(../wgtRes/artist_guo_1.png);
+}
+.guo_2{
+   background: url(../wgtRes/artist_guo_2.png); 
+}
+
+.film_1{
+    margin:20% 10% 0 10%;
+    width:80%;
+    height:12%;
+}
+.wpw{
+   width:45%;
+   height:100%;
+   float:left;
+}
+.mtw{
+   width:45%;
+   height:100%;
+   float:right;
+}
+.film_2{
+    margin:10% 10% 0 10%;
+    width:80%;
+    height:12%;
+}
+.film_3{
+    margin:10% 10% 0 10%;
+    width:80%;
+    height:12%;
+}
+
+.film_4{
+    margin:10% 10% 0 10%;
+    width:80%;
+    height:12%;
+}
+.returnbtn{
+	width:8%;
+   height:60%;
+   left:0;
+}
+.re_icon{
+   top:3%;
+   left:15.5%;
+}
+.ui_fx{	
+	height:80%;
+	left:80%; 
+}
+.ui_fx_1{
+	position:absolute;
+    top:50%;
+    left:22%;
+}
+
+.content_1{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
+  z-index:-1;
+}
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="ui-mobile landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/ui-media.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-apple.css">
+    <link rel="stylesheet"  href="css/style.css"  > 
+    <script src="js/zy_anim.js"></script>
+    <script src="js/zy_control.js"> </script>
+ 	<script src="js/zy_tmpl.js"></script>  
+ 	<script src="js/imagebrowser.js"></script>
+ 	<script src="js/jquery-1.7.2.js"></script>
+ 	<script src="js/weibo.js"></script>
+ 	<script src="js/jquery.mobile-1.1.0.js"></script>
+ 	<script>
+ 	$(document).ready(function(){
+ 		/*滑动换页*/
+ 		if( localStorage.inpage == "演员介绍" ){
+				$("body").live("swipeleft",function(){
+					localStorage.artopage="artist_huang.html";
+					window.location.href=localStorage.artopage;
+				});
+				$("body").live("swiperight",function(){
+					localStorage.arbackpage="artist_yu.html";
+					window.location.href=localStorage.arbackpage;
+				});
+		}
+ 		/*打开图片浏览界面*/
+ 		$('.pic').click(function(){
+ 			var temp = $(this).css("background-image");
+ 			var img = temp.substring(4, temp.length-1);
+ 			localStorage.backurl = temp;//点击的图片地址，url开头，设置图片浏览器中的图片
+ 			localStorage.url = img;//点击的图片的地址，file开头
+ 			var title = $(this).attr('id');
+ 			var param="picbrowser.html?title="+title;
+ 			uexWindow.open("picbrowser","0",param,"2","0","0","0");
+ 		});
+ 	});
+ 	</script> 
+  </head>
+  <body class="ui-mobile-viewport">
+  <div class="vanc1" >
+     <div data-role="header" class="ui-header ui-bar-a ui-header-fixed ">
+            <div style="font-size:1.0em; font-family:微软雅黑;" class="ui-title" tabindex="0" role="heading" aria-level="1">
+                                演员介绍
+            </div> 
+	<div class="ui-btn ui-btn-limit ui-btn-left ui-btn-iphone" onclick="uexWindow.close(0);"> 
+		<div class="ui-btn-apple-al">
+			<div class="ui-btn-apple-ar">
+				<div class="ui-btn-apple-ac">
+					<span class="ui-btn-inner ">
+						<span class="ui-btn-text">返回</span>  
+						<span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span>
+					</span>  
+				</div>
+			</div>
+		</div>
+	</div>
+       </div>
+	<div class="wrapper1">  
+		<div class="pic xu_1" id="嘉怡"></div>
+		<div class="text1">
+		<div style= "font-size:1.0em; font-family:微软雅黑;">&nbsp;&nbsp;&nbsp;&nbsp;嘉怡</div> 
+		<div style= "font-size:0.9em; font-family:微软雅黑;"><br/>&nbsp;&nbsp;&nbsp;&nbsp; 开朗积极，独立有主见。任职医院急症室医生，常常见证生命的生离死别，但一直以专业态度面对，理性成熟却不失人情味。与陈翔在桌球室懈怠，陈翔善打桌球，也被嘉怡所败，但陈翔一流的驾驶技术，也给嘉怡留下深刻印象。卢峰入院时，嘉怡为卢峰进行急救，遇到正跌进人生谷底的翔。然而医生的重责，令嘉怡没有松懈，
+		无闲多与翔交谈，只是嘉怡的专业态度，对陈翔有深刻影响。</div>
+		</div> 
+	</div>
+	
+	<div class="wrapper2">
+	     <div class="text2">
+	     <div style= "font-size:1.0em; font-family:微软雅黑;">&nbsp;&nbsp;&nbsp;&nbsp;徐熙媛</div>
+	     <div style="font-size:0.9em; font-family:微软雅黑;"><br/>&nbsp;&nbsp;&nbsp;&nbsp;艺名“大S”，台湾著名艺人。2001年，出演《流星花园》中杉菜一角红遍全亚洲，并入围金钟奖
+	                                                                                         最佳女主角奖。之后，又在多部知名偶像剧和电影中担当女主角。</div>
+	     </div>
+	     <div class="pic xu_2" id="徐熙媛"></div>
+	</div>
+</div>
+  </body>
+ <script>
+zy_init();
+</script>
+  </html>

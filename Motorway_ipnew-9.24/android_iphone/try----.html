@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/ui-tab.css">
+        <link rel="stylesheet" href="css/ui-input.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+		<link rel="stylesheet" href="css/ui-res.css">
+		<link rel="stylesheet" href="css/ui-anim.css">
+		<link rel="stylesheet" href="css/ui-btn.css">
+	    <link rel="stylesheet" href="css/ui-img.css">
+        <script src="js/zy_control.js">
+        </script>
+        <script src="js/zy_click.js">
+        </script>
+        <script src="js/zy_anim.js">
+        </script>
+
+    </head>
+    <body class="um-vp">
+
+<!--header开始-->
+<div id="header" class="uh c-m2 c-bla t-wh">
+	<h1 class="ut ulev0 ut-s tx-c" tabindex="0">
+	<div class="btn btn-l btn-a ub ub-ac ">
+		<div class="ulim" onclick="uexWindow.close(0);">返回</div>
+	</div>
+		立即购票
+	</h1>
+</div>
+<!--header结束-->
+
+
+			
+<div id="content" class="ub-f1 tx-l t-bla im">
+
+
+
+
+
+
+
+
+</div>	
+
+	
+<!--footer开始-->
+<div id="footer" class="uf c-m2 c-bla t-wh">
+<h1 class="ut ulev-2 tx-c" tabindex="0">(c) Copyright 北京林业大学.
+<br>
+All rights reserved.
+</h1>
+</div>
+<!--footer结束-->	
+
+		
+    </body>
+	
+	
+    <script>
+    	zy_init();
+        window.uexOnload = function(type){
+            if (!type) {
+                zy_con("content", "index_content.html", 0, $$("header").offsetHeight);
+            }
+			window.onorientationchange=window.onresize=function()
+			{
+				zy_resize("content",0,$$("header").offsetHeight);				
+			}
+			
+        }
+		function loadmsgcontent()
+		{
+			zy_anim_push("header1","a-op");
+			zy_anim_pop("header2","a-mr");
+			zy_con("content", "msg_content.html", 0, $$("header").offsetHeight);
+		}
+		function loadindexcontent()
+		{
+			zy_anim_listen("header1",listen);
+			zy_anim_push("header2","a-mr");
+			zy_anim_pop("header1","a-op");
+			zy_con("content", "index_content.html", 0, $$("header").offsetHeight);
+		}
+		function listen()
+		{
+			uexLog.sendLog("listen anim event "+event.propertyName);
+		}
+    </script>
+</html>
+
+	
+
+ 
+ 
+ 
+
+
+
+
+
+
+  </body>
+  </html>

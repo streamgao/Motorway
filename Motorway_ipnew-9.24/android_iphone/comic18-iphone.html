@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="ui-mobile landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>comic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-media.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-apple.css">
+    <link rel="stylesheet" href="css/comic.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate-custom.css">
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/zy_anim.js"></script>
+    <script src="js/zy_control.js"></script>
+ 	<script src="js/zy_tmpl.js"></script>
+ 	<script src="js/zy_event.js"></script>
+    <script src="js/weibo.js"></script>
+    <script src="js/accelerometer.js"></script>
+    <script src="js/menuani.js"></script>
+   
+  </head>
+  <body class=".ui-mobile-viewport" >
+
+	<div class="vanc1" style="background-image:url(images/tele2.jpg) !important;background-repeat:none;">
+	
+	
+	<!-- 打电话按钮 -->
+	<div class="dial" style="position:fixed; top:0; height:100%; width:100%; color:#FFFFFF;">
+	<input id="dial_" placeholder="输入号码" name="text-0" id="text-0" type="text" value="" class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-btn-a dial" 
+			style="position:fixed; z-index:200; width:96%; top:3%;"/>
+	<div class="dial" style="position:absolute; height:20%;width:35%;top:26%;left:10%; " onclick="uexCall.dial(document.getElementById('dial_').value);"></div>
+	<div class="dial" id="dial_bf" style="position:absolute; height:15%;width:20%;top:70%;left:13%; " onclick="uexContact.open();"></div>
+	<div class="dial" id="dial_gf" style="position:absolute; height:15%;width:22%;top:60%;left:38%; "  onclick="uexContact.open();"></div>
+	<div class="dial" id="dial_tf" style="position:absolute; height:15%;width:20%;top:70%;left:65%; " onclick="uexContact.open();"></div>
+	<div class="dial" style="position:absolute; height:15%;width:23%;top:80%;left:38%; " onclick="uexCall.dial(document.getElementById('dial_').value);"></div>
+	</div>
+	
+</div>
+
+	<!-- 菜单按钮 -->
+	<a id="menubtn" class="hidden" data-test="bounceIn">menu</a>
+
+	<!-- 菜单开始 -->
+	<div id="menu" class="hidden">
+		<ul class="menulist" style="font-size: 1.3em;line-height: 1em;" >
+			<li id="share" >分享本页漫画</li>
+			<br/>
+			<li id="gfweibo" >官方微博</li>
+			<br/>
+			<li id="artists" >演员介绍</li>
+			<br/>
+			<li id="ymbh" >银幕背后</li>
+			<br/>
+			<li id="ticket" >立即购票</li>
+			<br/>
+			<li id="team" >制作团队</li>
+			<br/>
+			<li onclick="window.location.href='comic.html'" >回到首页</li>
+		</ul>
+	</div>
+	<!-- 菜单按钮结束 -->
+
+	<!-- 用来获取背景图片的 -->
+	<div id="comicpic" src="wgtRes/comic18.jpg" style="background:url(wgtRes/comic18.jpg);display:none;"></div>
+
+
+  </body>
+   <script>
+	zy_init();
+	
+	
+	window.uexOnload = function(){
+	<!-- 传感器回调 -->
+		uexSensor.onAccelerometerChange = accelerometerChange;
+		uexWidgetOne.cbError = function(opCode,errorCode,errorInfo){
+			/*alert("errorCode:" + errorCode + "\nerrorInfo:" + errorInfo);*/
+		}
+		uexSensor.open(1,3);
+	<!-- 联系人回调 -->
+		uexContact.cbOpen=function(opCode,dataType,data){
+			if(dataType==1){
+				var obj = eval('('+data+')');
+				document.getElementById('dial_').value = obj.num;
+			}
+		}
+	}
+	
+	$(document).ready(function(){
+	<!-- 跳转页 -->
+		localStorage.backpage = "comic16.html";
+		localStorage.topage = "comic18.html";
+		
+		<!-- 滑动翻页 -->
+		var evc = new zyEvent(document,'left',function(){window.location.href = localStorage.topage;});
+		var evd = new zyEvent(document,'right',function(){window.location.href = localStorage.backpage;});
+
+	<!-- 跳转到分享页 -->
+		$('#share').click(function(){
+			var src = $("#comicpic").attr("src");
+			var param="share.html?src="+src;
+			var temp = $("#comicpic").css("background-image");
+ 			var img = temp.substring(4, temp.length-1);
+ 			localStorage.url = img;//file:....
+ 			localStorage.src = param;
+			openweibo();
+		});
+		
+	<!-- 菜单跳转-->
+		localStorage.inpage == "1";
+		$('#gfweibo').click(function(){
+			uexWindow.toast("0","5","正在加载车手官方微博~稍等哦~",0);
+			uexWindow.open('gfweibo', '0', 'gfweibo.html', '2', '', '', 0x0);
+		});
+		$('#artists').click(function(){
+			localStorage.inpage = "演员介绍";
+			uexWindow.open('artists', '0', 'artist_yu.html', '2', '', '', 0x0);
+		});
+		$('#ymbh').click(function(){
+			uexWindow.open('ymbh', '0', 'ymbh.html', '2', '', '', 0x0);
+		});
+		$('#ticket').click(function(){
+			uexWindow.open('ticket', '0', 'film.html', '2', '', '', 0x0);
+		});
+		$('#team').click(function(){
+			uexWindow.open('team', '0', 'team.html', '2', '', '', 0x0);
+		});
+		
+	<!-- 菜单弹出动画 -->
+		$('a[data-test]').click(function(){
+			if($('#menu').attr('class') == 'hidden'){
+				bounceIn();
+			}
+			else{
+				bounceOut();
+			}
+		});
+		
+	<!-- 菜单按钮隐藏 -->
+		$('div:not("#menubtn"):not("#pc-btn-l"):not("#pc-btn-r"):not(".dial")').click(function(){
+			if($('#menubtn').attr('class') == 'hidden'){
+				fadeInUp();
+			}
+			else{
+				fadeOutDown();
+				if($('#menu').attr('class') != 'hidden'){
+					bounceOut();
+				}
+			}
+		});
+		
+	});
+   </script>
+</html>
